@@ -1,0 +1,48 @@
+{
+  "message": "Palylist Found",
+  "playlist_data": {
+    "length": 3,
+    "owner": "Cocomelon - Nursery Rhymes",
+    "playlist_id": "PLT1rvk7Trkw6txGo58goY2a6U341h9EqB",
+    "title": "CoComelon Lane Season 2! New Netflix Kids Show!",
+    "description": "Season 2 of the Netflix Original series CoComelon Lane is now playing!\n\nCoComelon Lane explores the lives of beloved preschooler JJ and his best friends (Cody, Cece, Nina, Bella, and Nico) as they experience life\u2019s \u201cbig moments\u201d as little kids. From the excitement of going to your first swim lesson to getting your first haircut , JJ \u2013 speaking directly to the audience for the first time! \u2013 invites little ones to join their favorite CoComelon characters as they celebrate life\u2019s special milestones of growing up.",
+    "videos": [
+      {
+        "vidoe_id": "rLeRxvRBirQ",
+        "thumbnail": "https://i.ytimg.com/vi/rLeRxvRBirQ/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLA7VCAHCDcqGdr5k7g-pdJjuF79IA",
+        "title": "Bella's Butterfly Goodbye! | NEW CoComelon Lane Episodes on Netflix | Full Episode",
+        "length": "438",
+        "views": {
+          "text": "3.2M views"
+        },
+        "date_ago": {
+          "text": "2 months ago"
+        }
+      },
+      {
+        "vidoe_id": "bMZToYgCK7Q",
+        "thumbnail": "https://i.ytimg.com/vi/bMZToYgCK7Q/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDKhTzK0i9BiFuw3DKLtV_6U7noEA",
+        "title": "JJ Gets a Checkup | NEW CoComelon Lane Episodes on Netflix | Full Episode",
+        "length": "439",
+        "views": {
+          "text": "3.9M views"
+        },
+        "date_ago": {
+          "text": "2 months ago"
+        }
+      },
+      {
+        "vidoe_id": "-xFrz2Pe8fc",
+        "thumbnail": "https://i.ytimg.com/vi/-xFrz2Pe8fc/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAnYpxPhh_Z7zTJo07_0uBKC79BmA",
+        "title": "Cody's First Train Ride | NEW CoComelon Lane Episodes on Netflix | Full Episode",
+        "length": "469",
+        "views": {
+          "text": "7.8M views"
+        },
+        "date_ago": {
+          "text": "2 months ago"
+        }
+      }
+    ]
+  }
+}

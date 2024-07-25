@@ -1,0 +1,117 @@
+{
+  "status": true,
+  "message": "Palylist Found",
+  "playlist_data": {
+    "length": 8,
+    "owner": "Cocomelon - Nursery Rhymes",
+    "playlist_id": "PLT1rvk7Trkw4nbIcS1czIII8UoioxkI8V",
+    "title": "JJ 's Birthday Bash Party Playlist",
+    "description": "Making memories with every birthday moment!\n\nCelebrate together with this fun filled playlist of exciting birthday songs, games and surprises! Whether you're planning your little one's big day or just want to add some joy, these videos are guaranteed to bring smiles and laughter. Come sing, dance and celebrate together!\n\nFor more birthday fun check out: www.instagram.com/cocomelon_official",
+    "videos": [
+      {
+        "url": "https://www.youtube.com/watch?v=pPTT_cowCtY",
+        "video_id": "pPTT_cowCtY",
+        "thumbnail": "https://i.ytimg.com/vi/pPTT_cowCtY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAFH7YvKPAX9DsxhhH4x_qMeok-aA",
+        "title": "Wheels on the Birthday Bus Song! \ud83c\udf82 Happy Birthday JJ!  | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "175",
+        "views": {
+          "text": "3.8M views"
+        },
+        "date_ago": {
+          "text": "2 days ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=ati6VY8EbPI",
+        "video_id": "ati6VY8EbPI",
+        "thumbnail": "https://i.ytimg.com/vi/ati6VY8EbPI/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLBVMiX17z2MCC5u_W-ifwaaCX4frQ",
+        "title": "Happy Birthday JJ! \ud83c\udfb6\ud83c\udf82| Dance Party | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "164",
+        "views": {
+          "text": "44K views"
+        },
+        "date_ago": {
+          "text": "3 days ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=9n7E12UzLFI",
+        "video_id": "9n7E12UzLFI",
+        "thumbnail": "https://i.ytimg.com/vi/9n7E12UzLFI/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDwsQn5SNH6T4cIQL-vI58Y8a0eXA",
+        "title": "Happy Birthday JJ \ud83c\udf82 | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "181",
+        "views": {
+          "text": "10M views"
+        },
+        "date_ago": {
+          "text": "1 year ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=ep2qRkyIjek",
+        "video_id": "ep2qRkyIjek",
+        "thumbnail": "https://i.ytimg.com/vi/ep2qRkyIjek/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLD2hHsQDdimb-BirnSX0Th7-bU_Qg",
+        "title": "JJ's Birthday At The Farm Song | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "176",
+        "views": {
+          "text": "103M views"
+        },
+        "date_ago": {
+          "text": "2 years ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=Xf4XemBwzDY",
+        "video_id": "Xf4XemBwzDY",
+        "thumbnail": "https://i.ytimg.com/vi/Xf4XemBwzDY/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLDmWbKBtB7GXQFKoUThBiZRAEzFUg",
+        "title": "JJ's Birthday Surprise Song | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "176",
+        "views": {
+          "text": "165M views"
+        },
+        "date_ago": {
+          "text": "2 years ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=sqApA2OpH_Q",
+        "video_id": "sqApA2OpH_Q",
+        "thumbnail": "https://i.ytimg.com/vi/sqApA2OpH_Q/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCpio2wzvZ5iAU4A_T2OU2mjsjknw",
+        "title": "JJ's Birthday Musical Chairs Song | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "188",
+        "views": {
+          "text": "49M views"
+        },
+        "date_ago": {
+          "text": "3 years ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=dgLs66FE32A",
+        "video_id": "dgLs66FE32A",
+        "thumbnail": "https://i.ytimg.com/vi/dgLs66FE32A/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCTw6Khcof0gzZPUf9NWIBr0MjVTw",
+        "title": "Night Before JJ's Birthday Song | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "191",
+        "views": {
+          "text": "92M views"
+        },
+        "date_ago": {
+          "text": "3 years ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=ho08YLYDM88",
+        "video_id": "ho08YLYDM88",
+        "thumbnail": "https://i.ytimg.com/vi/ho08YLYDM88/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLCJFHdzX5obTU1DjRardrpu5rzgPg",
+        "title": "Happy Birthday Song | CoComelon Nursery Rhymes & Kids Songs",
+        "length": "151",
+        "views": {
+          "text": "994M views"
+        },
+        "date_ago": {
+          "text": "6 years ago"
+        }
+      }
+    ]
+  }
+}
