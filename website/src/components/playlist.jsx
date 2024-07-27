@@ -40,7 +40,7 @@ export function Playlist({data, getVideo, getAllVideos}) {
       <div className="playlist-videos">
         {data.playlist_data.videos.map((video,i)=>{
           return(
-            <div className="playlist-video">
+            <div className="playlist-video" key={i}>
                 <h1 className="video-number">{i+1} </h1>
               <div className="playlist-thumbnail">
                 <img src={video.thumbnail} alt="" />

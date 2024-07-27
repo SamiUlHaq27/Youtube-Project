@@ -25,7 +25,7 @@ export function Dropdown({ streams }) {
                     })}
                 </div>
             </div>
-            <a href={selected.url} target='_blank' download="video"><button>Download</button></a>
+            <a href={selected.url} className="download-target" target='_blank' download="video"><button>Download</button></a>
         </>
     )
 }

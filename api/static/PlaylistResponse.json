@@ -2,7 +2,7 @@
   "status": true,
   "message": "Palylist Found",
   "playlist_data": {
-    "length": 8,
+    "length": 9,
     "owner": "Cocomelon - Nursery Rhymes",
     "playlist_id": "PLT1rvk7Trkw4nbIcS1czIII8UoioxkI8V",
     "title": "JJ 's Birthday Bash Party Playlist",
@@ -15,10 +15,23 @@
         "title": "Wheels on the Birthday Bus Song! \ud83c\udf82 Happy Birthday JJ!  | CoComelon Nursery Rhymes & Kids Songs",
         "length": "175",
         "views": {
-          "text": "3.8M views"
+          "text": "6.6M views"
         },
         "date_ago": {
-          "text": "2 days ago"
+          "text": "3 days ago"
+        }
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=_yC7-iR6t3w",
+        "video_id": "_yC7-iR6t3w",
+        "thumbnail": "https://i.ytimg.com/vi/_yC7-iR6t3w/hqdefault.jpg?sqp=-oaymwEjCNACELwBSFryq4qpAxUIARUAAAAAGAElAADIQj0AgKJDeAE=&rs=AOn4CLAfFpBcqJGlhMy3yHEaC7RlKavxqA",
+        "title": "Musical Chairs Birthday | NEW \ud83c\udf82 CoComelon Animal Time | Animals for Kids",
+        "length": "184",
+        "views": {
+          "text": "32K views"
+        },
+        "date_ago": {
+          "text": "1 day ago"
         }
       },
       {
@@ -28,10 +41,10 @@
         "title": "Happy Birthday JJ! \ud83c\udfb6\ud83c\udf82| Dance Party | CoComelon Nursery Rhymes & Kids Songs",
         "length": "164",
         "views": {
-          "text": "44K views"
+          "text": "61K views"
         },
         "date_ago": {
-          "text": "3 days ago"
+          "text": "5 days ago"
         }
       },
       {
@@ -106,7 +119,7 @@
         "title": "Happy Birthday Song | CoComelon Nursery Rhymes & Kids Songs",
         "length": "151",
         "views": {
-          "text": "994M views"
+          "text": "995M views"
         },
         "date_ago": {
           "text": "6 years ago"

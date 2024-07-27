@@ -4,6 +4,7 @@ from rest_framework import status
 import pytubefix
 import json
 from .settings import BASE_DIR
+from time import sleep
 
 
 @api_view(['GET'])
@@ -15,7 +16,6 @@ def video(request):
         return Response({
             'status':False,
             'message':'The request must include valid youtube video url e.g. "?url=https://youtu.be/?watch=asdfdaf"'},
-                        status=status.HTTP_400_BAD_REQUEST
                         )
     
     try:
@@ -68,8 +68,7 @@ def playlist(request):
     
     try:
         with open(BASE_DIR/'static/PlaylistResponse.json','r') as f:
-            res = json.load(f)
-        return Response(res)
+            return Response(json.load(f))
         data = pytubefix.Playlist(playlist_url)
         urls = data.video_urls
         

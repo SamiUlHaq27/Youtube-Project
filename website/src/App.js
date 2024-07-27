@@ -28,7 +28,8 @@ function App() {
       getPlaylist(searchUrl);
     } else if (searchUrl.includes("youtu")) {
       getVideo(searchUrl);
-    } else {}
+    } else {
+    }
   }
 
   function getVideo(url) {
@@ -36,9 +37,10 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data.status) {
-          console.log("updating data")
           data.type = "video";
-          setVideosData([...videosData, data]);
+          setVideosData((videosData) => {
+            return [...videosData, data];
+          });
         }
       })
       .catch((error) => {
@@ -47,20 +49,28 @@ function App() {
   }
 
   function getPlaylist(url) {
-    fetch(endpoint+"playlist/?url="+url)
-    .then((response)=>response.json())
-    .then((data)=>{
-      console.log(data)
-      if (data.status) {
-        data.type = "playlist"
-        setPlaylistsData([...playlistsData,data])
-      }
-    })
+    fetch(endpoint + "playlist/?url=" + url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(playlistsData);
+        if (data.status) {
+          data.type = "playlist";
+          setPlaylistsData([...playlistsData, data]);
+        }
+      });
   }
 
-  function getAllPlaylistVideos(urls){
+  function getAllPlaylistVideos(urls) {
     for (let index = 0; index < urls.length; index++) {
-      getVideo(urls[index])
+      getVideo(urls[index]);
+    }
+  }
+
+  function downloadAll() {
+    let buttons = document.getElementsByClassName("download-target");
+    console.log(buttons);
+    for (let index = 0; index < buttons.length; index++) {
+      buttons[index].click();
     }
   }
 
@@ -68,40 +78,65 @@ function App() {
     <>
       <Header />
       <div className="main-title">
-        <h1>Youtube Video & Playlist Downlaoder</h1>
+        <h1>Youtube Video & Playlist Downloader</h1>
         <p>
           Paste the link of youtube video or playlist below and click the
           dowload icon
         </p>
       </div>
-      <SearchBar getter={getUrl} />
+      <SearchBar
+        getter={getUrl}
+        videos={videosData}
+        playlists={playlistsData}
+      />
       {videosData.length ? (
         <>
+          <div className="download-list">
+            <h2>Download List</h2>
+            <p>All your fetched video which are ready to be downloaded</p>
+          </div>
           <div className="videos-display">
             {videosData
               .filter((data, i) => {
                 return data.type === "video";
               })
               .map((v, i) => {
-                return(<Video data={v} remover={removeVideoData} index={i} key={i} />)
+                return (
+                  <Video data={v} remover={removeVideoData} index={i} key={i} />
+                );
               })}
           </div>
           <div className="videos-buttons">
-            <button>Download All</button>
+            <div class="tooltip">
+            <button onClick={downloadAll}>Download All</button>
+              <span class="tooltiptext">Videos will be downlaoded according to selected quality</span>
+            </div>
+            <button onClick={()=>setVideosData([])}>Clear All</button>
           </div>
         </>
       ) : (
         <></>
       )}
-      {playlistsData.length?(<>
-        {playlistsData
-              .filter((data, i) => {
-                return data.type === "playlist";
-              })
-              .map((p, i) => {
-                  return(<Playlist data={p} getVideo={getUrl} getAllVideos={getAllPlaylistVideos} key={i} />)
-              })}
-      </>):(<></>)}
+      {playlistsData.length ? (
+        <>
+          {playlistsData
+            .filter((data, i) => {
+              return data.type === "playlist";
+            })
+            .map((p, i) => {
+              return (
+                <Playlist
+                  data={p}
+                  getVideo={getUrl}
+                  getAllVideos={getAllPlaylistVideos}
+                  key={i}
+                />
+              );
+            })}
+        </>
+      ) : (
+        <></>
+      )}
       <Footer />
     </>
   );

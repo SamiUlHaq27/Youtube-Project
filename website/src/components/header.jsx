@@ -9,7 +9,7 @@ export function Header(){
             <div className="pages-div">
                 <ul>
                     <a href="#"><li>Home</li></a>
-                    <a href="#"><li>Terms Of Use</li></a>
+                    <a href="#"><li>How To Use</li></a>
                     <a href="#"><li>Privacy Policy</li></a>
                     <a href="#"><li>About Us</li></a>
                 </ul>
