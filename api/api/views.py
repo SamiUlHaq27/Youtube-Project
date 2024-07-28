@@ -1,65 +1,86 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http.request import HttpRequest
 from rest_framework import status
-import pytubefix
-import json
-from .settings import BASE_DIR
-from time import sleep
+from .core import getPlaylist, getVideo
+from authentication.views import verify
 
 
 @api_view(['GET'])
-def video(request):
+def video(request:HttpRequest):
+    print('Path',request.path)
+    print(request.GET)
+    token = request.GET.get('token',False)
+    
+    if(not token):
+        return Response({
+            'status':False,
+            'message':'Authorization credentials were not provided'
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+    try:
+        data = verify(token)
+    except TimeoutError as e:
+        return Response({
+            'status':False,
+            'message':"Token expired"
+            }, status=status.HTTP_401_UNAUTHORIZED)
+    except Exception as e:
+        return Response({
+            'status':False,
+            'message':"Error occured"
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    # ---------------------------- Processing Request -----------------------------------------
     video_url = request.GET.get('url', False)
     print("Video URL:",video_url)
-    
     if not video_url:
         return Response({
             'status':False,
-            'message':'The request must include valid youtube video url e.g. "?url=https://youtu.be/?watch=asdfdaf"'},
-                        )
+            'message':'The request must include valid youtube video url e.g. "?url=https://youtu.be/?watch=asdfdaf"'
+            }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
     try:
-        # with open(BASE_DIR/'static/VideoResponse.json','r') as f:
-        #     return Response(json.load(f))
-        data = pytubefix.YouTube(video_url)
-        
-        video_data = {
-            'author':data.author,
-            # 'captions':data.captions,
-            # 'description':data.description,
-            # 'keywords':data.keywords,
-            'length':data.length,
-            'thumbnail':data.thumbnail_url,
-            'title':data.title,
-            'views':data.views,
-            # 'video_id':data.video_id,
-            'publish_date':{
-                'publish_year':data.publish_date.year,
-                'publish_month':data.publish_date.month,
-                'publish_day':data.publish_date.day,
-                'publish_hour':data.publish_date.hour,
-                'publish_minute':data.publish_date.minute
-                },
-            'streams':data.streaming_data
-        }
-        
-        with open(BASE_DIR/'static/VideoResponse.json','w') as f:
-            json.dump({'status':True,'message':'Video Found', 'video_data':video_data}, f, indent=2)
-        
-        return Response({'status':True,'message':'Video Found', 'video_data':video_data})
+        video_data = getVideo(video_url)
+        return Response({
+            'status':True,
+            'message':'Video Found',
+            'video_data':video_data
+            }, status=status.HTTP_200_OK)
     except Exception as e:
         print(e)
         return Response({
             'status':False,
-            'message':'Error occured!'})
+            'message':'Error occured!'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
-    
-
 @api_view(['GET'])
 def playlist(request):
+    
+    token = request.GET.get('token',False)
+    
+    if(not token):
+        return Response({
+            'status':False,
+            'message':'Authorization credentials were not provided'
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+    try:
+        data = verify(token)
+    except TimeoutError as e:
+        return Response({
+            'status':False,
+            'message':"Token expired"
+            }, status=status.HTTP_401_UNAUTHORIZED)
+    except Exception as e:
+        return Response({
+            'status':False,
+            'message':"Error occured"
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    # ---------------------------- Processing Request -----------------------------------------
     playlist_url = request.GET.get('url', False)
     print("Playlist URL: ",playlist_url)
-    
     if not playlist_url:
         return Response({
             'status':False,
@@ -67,44 +88,14 @@ def playlist(request):
                         )
     
     try:
-        with open(BASE_DIR/'static/PlaylistResponse.json','r') as f:
-            return Response(json.load(f))
-        data = pytubefix.Playlist(playlist_url)
-        urls = data.video_urls
-        
-        videos = data.initial_data["contents"]["twoColumnBrowseResultsRenderer"]["tabs"][0]["tabRenderer"]["content"]["sectionListRenderer"]["contents"][0]["itemSectionRenderer"]["contents"][0]["playlistVideoListRenderer"]["contents"]
-        videos_data = []
-        for i in range(0,len(videos)):
-            video = videos[i]
-            videos_data.append({
-                'url':urls[i],
-                'video_id':video["playlistVideoRenderer"]["videoId"],
-                'thumbnail':video["playlistVideoRenderer"]["thumbnail"]["thumbnails"][-1]["url"],
-                'title':video["playlistVideoRenderer"]["title"]["runs"][0]["text"],
-                'length':video["playlistVideoRenderer"]["lengthSeconds"],
-                'views':video["playlistVideoRenderer"]["videoInfo"]["runs"][0],
-                'date_ago':video["playlistVideoRenderer"]["videoInfo"]["runs"][2],
-            })
-        
-        
-        playlist_data = {
-            'length':data.length,
-            'owner':data.owner,
-            'playlist_id':data.playlist_id,
-            'title':data.title,
-            'description':data.description,
-            'videos':videos_data
-        }
-        
-        res = {'status':True,'message':'Palylist Found', 'playlist_data':playlist_data}
-        
-        with open(BASE_DIR/'static/PlaylistResponse.json','w') as f:
-            json.dump(res, f, indent=2)
-        
-        return Response(res)
+        playlist_data = getPlaylist(playlist_url)
+        return Response({
+            'status':True,
+            'message':'Palylist Found', 'playlist_data':playlist_data
+            }, status=status.HTTP_200_OK)
     except Exception as e:
         print(e)
         return Response({
             'status':False,
             'message':'Error occured!'
-            })
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

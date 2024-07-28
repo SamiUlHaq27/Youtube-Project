@@ -7,11 +7,38 @@ import { SearchBar } from "./components/searchBar";
 import { Video } from "./components/video";
 import { Playlist } from "./components/playlist";
 
+
 function App() {
-  var endpoint = "http://127.0.0.1:8000/";
+  const endpoint = "http://127.0.0.1:8000/";
+
+  function fetchToken(){
+    fetch(endpoint+'auth/',{
+      method:'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:JSON.stringify({username:'Sami',password:'admin5231'})
+    })
+    .then((response)=>response.json())
+    .then((data)=>{
+      console.log(data)
+      localStorage.setItem('accessToken',data.token)
+    })
+  }
+
+  function checkToken() {
+    if(getToken()){
+      return(true)
+    } else {
+      return(false)
+    }
+  }
+
+  function getToken() {
+    return(localStorage.getItem('accessToken'))
+  }
 
   var [videosData, setVideosData] = useState([]);
   var [playlistsData, setPlaylistsData] = useState([]);
+  var selectedLinks = []
 
   function removeVideoData(index) {
     let list = [];
@@ -24,6 +51,9 @@ function App() {
   }
 
   function getUrl(searchUrl) {
+    if(!checkToken()){
+      fetchToken()
+    }
     if (searchUrl.includes("playlist")) {
       getPlaylist(searchUrl);
     } else if (searchUrl.includes("youtu")) {
@@ -33,29 +63,39 @@ function App() {
   }
 
   function getVideo(url) {
-    fetch(endpoint + "video/?url=" + url)
+    console.log("video token: ",getToken())
+    fetch(endpoint + "video/?url=" + url + "&token="+getToken())
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         if (data.status) {
           data.type = "video";
+          data.url = url;
           setVideosData((videosData) => {
             return [...videosData, data];
           });
+        } else {
+          console.log("status: ",data.status)
+          setVideosData([...videosData])
         }
       })
       .catch((error) => {
         console.error("Error: ", error);
+
       });
   }
 
   function getPlaylist(url) {
-    fetch(endpoint + "playlist/?url=" + url)
+    fetch(endpoint + "playlist/?url=" + url + "&token="+getToken())
       .then((response) => response.json())
       .then((data) => {
-        console.log(playlistsData);
+        console.log(data);
         if (data.status) {
           data.type = "playlist";
+          data.url = url;
           setPlaylistsData([...playlistsData, data]);
+        } else {
+          setPlaylistsData([...playlistsData])
         }
       });
   }
@@ -72,6 +112,15 @@ function App() {
     for (let index = 0; index < buttons.length; index++) {
       buttons[index].click();
     }
+  }
+
+  function copyLinks() {
+    let links = ""
+    for (let i = 0; i < selectedLinks.length; i++) {
+      links += selectedLinks[i] + "\n";
+    }
+    navigator.clipboard.writeText(links)
+    alert("Links copied")
   }
 
   return (
@@ -102,13 +151,17 @@ function App() {
               })
               .map((v, i) => {
                 return (
-                  <Video data={v} remover={removeVideoData} index={i} key={i} />
+                  <Video data={v} remover={removeVideoData} selected={selectedLinks} index={i} key={i} />
                 );
               })}
           </div>
           <div className="videos-buttons">
+          <div class="tooltip">
+              <button onClick={()=>copyLinks()}>Copy Links</button>
+              <span class="tooltiptext">Got to IDM-Tasks-Add batch download from clipboard</span>
+            </div>
             <div class="tooltip">
-            <button onClick={downloadAll}>Download All</button>
+              <button onClick={downloadAll}>Download All</button>
               <span class="tooltiptext">Videos will be downlaoded according to selected quality</span>
             </div>
             <button onClick={()=>setVideosData([])}>Clear All</button>

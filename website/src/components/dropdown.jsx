@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
 
-export function Dropdown({ streams }) {
-
+export function Dropdown({ streams, setSelectedLink }) {
+    console.log("streams",streams)
     const [selected, setSelected] = useState(streams.formats[0]);
+    setSelectedLink(selected.url)
     
     return (
         <>
@@ -16,7 +17,7 @@ export function Dropdown({ streams }) {
                 <div className="dropdown-body">
                     {[...streams.formats, ...streams.adaptiveFormats].map((d, i) => {
                         return (
-                            <div className="dropdown-option" onClick={() => setSelected(d)} key={i}>
+                            <div className="dropdown-option" onClick={() => {setSelected(d)}} key={i}>
                                 <span>{d.mimeType.split(";")[0]}</span>
                                 <span>{d.hasOwnProperty("qualityLabel") ? d.qualityLabel : "Only Audio"}</span>
                                 <span>{d.hasOwnProperty("audioQuality") ? d.quality : "Only Video"}</span>
@@ -25,7 +26,7 @@ export function Dropdown({ streams }) {
                     })}
                 </div>
             </div>
-            <a href={selected.url} className="download-target" target='_blank' download="video"><button>Download</button></a>
+            <a href={selected.url} className="download-target" target='_blank' rel='noreferrer' download="video"><button>Download</button></a>
         </>
     )
 }
